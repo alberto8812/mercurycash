@@ -32,6 +32,8 @@
 
  
 ## ## create users:
-- component that contains tw
+- this component that contains three inputs for email, password and  are-check password (has a password views to see),two select input for contry  and language.
+ also has a checkbox for condition term ,   button of submit data and it has a link to sign up a new user
+ 
 ![create](https://user-images.githubusercontent.com/101751073/195706798-98e4cb90-b4ad-4680-b1df-eabfed8d70b9.jpg)
 
