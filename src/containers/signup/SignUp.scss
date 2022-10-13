@@ -107,6 +107,12 @@
                 font-weight:900;
                 color: var( --secondary-color);
                 padding: 7px;
+                option{
+                    padding-left: 30px;
+                    font-weight:900;  
+                    padding: 8px;
+                    cursor: pointer; 
+                }
                
             }
 

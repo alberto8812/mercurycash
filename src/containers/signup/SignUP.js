@@ -63,7 +63,7 @@ const SignUP = () => {
           setLoader(()=>true)//implement loader 5s
         }, 5000);
         
-        }, [])
+        }, [dispatch])
 
 
 
@@ -86,7 +86,7 @@ const SignUP = () => {
      {!loader?<div className='signup__louder'><Loaders/></div>:<div className='signup__container'>
        
          <div className='signup__container-header'>
-             <div><img src={images.logo}/></div>
+             <div><img src={images.logo} alt='mercury'/></div>
               <p><span>mercury</span>cash</p>
          </div>
 
