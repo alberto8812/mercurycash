@@ -13,6 +13,7 @@ const initailState={
   password:"",
   Retype_password:"",
   country:"",
+  language:"",
   checkBox:""
 
 }
@@ -23,14 +24,18 @@ const SignUP = () => {
   const countries=useSelector((state)=>state.countries)
   const dispatch = useDispatch();
   const [formSingUp, setFormSingUp] = useState(initailState)
+ console.log(formSingUp)
 
 
+    useEffect(() => {
+        dispatch(getContries())
+        }, [])
 
-useEffect(() => {
- dispatch(getContries())
-}, [])
 
-
+  const handleChangue=(e)=>{
+    console.log(e.target)
+    setFormSingUp({...formSingUp,[e.target.name]:e.target.value})
+  }
 
 
 
@@ -53,7 +58,8 @@ useEffect(() => {
               type="email"
               placeholder='Email'
               name='email'
-              value={formSingUp.email}  
+              value={formSingUp.email} 
+              onChange={(e)=>handleChangue(e)}
               />
               <div><FaUserCircle/></div>
             </div>
@@ -62,7 +68,9 @@ useEffect(() => {
               <input
                 type="Password"
                 placeholder='Password'
-                name='Password'
+                name='password'
+                value={formSingUp.password} 
+                onChange={(e)=>handleChangue(e)}
               />
               <div>< BsEye/></div>
               </div>
@@ -71,13 +79,20 @@ useEffect(() => {
               <input
                 type="Password"
                 placeholder='Retype Password'
-                name='RetypePassword'
+                name='Retype_Password'
+                value={formSingUp. Retype_password} 
+                onChange={(e)=>handleChangue(e)}
               />
               <div>< BsEye/></div>
               </div>
 
               <div className='signup__form-selectcontry'>
-              <select  onClick={''} >
+               <select  
+                name='country'
+                value={formSingUp.country} 
+                onChange={(e)=>handleChangue(e)}
+                
+               >
                     <option  value={''} >{'Country of Residence'}</option>
                     {countries.length && countries.map(data=>{
                       return <option  value={data.country}  key={data.id} >{data.country}</option>
@@ -87,8 +102,14 @@ useEffect(() => {
               </div>
 
               <div>
-              <select  onClick={''} >
-                    <option  value={''} >{'English'}</option>      
+              <select 
+                name='language'
+                value={formSingUp.language} 
+                onChange={(e)=>handleChangue(e)}
+                
+              >
+                    <option  value={'english'} >{'English'}</option> 
+                    <option  value={'español'} >{'Español'}</option>       
               </select>
               </div>
 
