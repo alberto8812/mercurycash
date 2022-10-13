@@ -37,3 +37,14 @@
  
 ![create](https://user-images.githubusercontent.com/101751073/195706798-98e4cb90-b4ad-4680-b1df-eabfed8d70b9.jpg)
 
+
+## Backend
+
+the back have be done with json server where the project has two routes:
+
+__IMPORTANTE__: this is a simulation with JSON server, but la aplicacion can connect with a real back-end
+
+- [ ] __GET /countries:
+  - get country from the back-end
+- [ ] __post /user:
+  - create new user in data base
