@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     
-    height: 100vh;
+    height: 110vh;
     width:  50vh;
     align-items: center;
     justify-content: center;
@@ -123,7 +123,7 @@
                     margin: 15px;
                     border-radius: 20px;
                     border: 1px solid var( --border);
-                    padding-left: 30px;
+                    padding-left: 25px;
                     font-weight:900;
                     color: var( --secondary-color);
                     cursor: pointer; 
@@ -161,7 +161,7 @@
                 flex-direction: row;
                 justify-content: flex-start;
                 align-items: center;
-                padding-bottom: 4vh;
+                padding-bottom: 3vh;
          
                 width: 30vh;
                 height: 5vh;

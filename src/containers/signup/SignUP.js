@@ -3,11 +3,11 @@ import {images} from '../../constants/idex';
 import{NavLink} from 'react-router-dom'
 import { BsEye,BsSearch } from 'react-icons/bs'
 import { FaUserCircle } from 'react-icons/fa'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";//librari redux
 import './SignUp.scss'
-import {getContries} from '../../Redux/actions'
-import {useSingUp} from  '../../hooks/useSingUp'
-import Loaders from '../../components/Loadres/Loaders';
+import {getContries} from '../../Redux/actions'//action reduc
+import {useSingUp} from  '../../hooks/useSingUp'//hook create  control form
+import Loaders from '../../components/Loadres/Loaders';// component loaders
 
 const initailState={
   email:"",
@@ -19,7 +19,7 @@ const initailState={
  
 }
 const validation=(initialValue)=>{
-  //console.log(initialValue)
+ //validation inialstate
   let error={}
   let longEmail= /\S+@\S+\.\S+/;
  console.log(initialValue)
@@ -41,7 +41,7 @@ const validation=(initialValue)=>{
  }
 
  
- console.log(error)
+
   return error
  }
 
@@ -49,19 +49,18 @@ const validation=(initialValue)=>{
 
 
 const SignUP = () => {
-  const {initialValue,errors, handleChangue,handleChangueCheck,handleError,handleSubmit,handleErrorcheck}=useSingUp(initailState,validation)
-  const countries=useSelector((state)=>state.countries)
+  const {initialValue,errors, handleChangue,handleChangueCheck,handleError,handleSubmit,handleErrorcheck}=useSingUp(initailState,validation)//hook implement control form
+  const countries=useSelector((state)=>state.countries)//store redux
   const dispatch = useDispatch();
-  const [formSingUp, setFormSingUp] = useState(initailState)
-  const [viewsPassword, setViewsPassword] = useState({password1:'password',password2:'password'})
-  const [loader, setLoader] = useState(false)
+  const [viewsPassword, setViewsPassword] = useState({password1:'password',password2:'password'})//view of parssword state
+  const [loader, setLoader] = useState(false)//hooks loader
   
 
 
     useEffect(() => {
-        dispatch(getContries())
+        dispatch(getContries())//get contry form de local host
         setTimeout(() => {
-          setLoader(()=>true)
+          setLoader(()=>true)//implement loader 5s
         }, 5000);
         
         }, [])
@@ -70,7 +69,7 @@ const SignUP = () => {
 
 
   const viewPassword=(dato)=>{
-
+  //funtion views password
    if(dato==='password1'){
     setViewsPassword(viewsPassword.password1==='password'?{...viewsPassword,password1:"text"}:{...viewsPassword,password1:'password'})
    }else{
@@ -93,12 +92,13 @@ const SignUP = () => {
 
          <div className='signup__container-body'>
             <h2>Create your account</h2>
-
+            {/*form to create count */}
             <form onSubmit={(e)=>handleSubmit(e)} >
               
             <div>
+              {/*input email */}
               <input
-              onBlur={handleError}
+              onBlur={handleError}//event to control error
               type="email"
               placeholder='Email'
               name='email'
@@ -106,12 +106,12 @@ const SignUP = () => {
               onChange={(e)=>handleChangue(e)}
               />
               <div><FaUserCircle/></div>
-              {errors.email && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.email}</p>}
+              {errors.email && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.email}</p>}{/*message error */}
             </div>
             
              <div>
+              {/*input password */}
               <input
-               
                 type={viewsPassword.password1}
                 placeholder='Password'
                 name='password'
@@ -122,8 +122,9 @@ const SignUP = () => {
               </div>
               
               <div>
+                 {/*input Retype Password */}
               <input
-                onBlur={handleError}
+                onBlur={handleError}//event error to retype password
                 type={viewsPassword.password2}
                 placeholder='Retype Password'
                 name='Retype_password'
@@ -131,27 +132,28 @@ const SignUP = () => {
                 onChange={(e)=>handleChangue(e)}
               />
               <div onClick={()=> viewPassword('password2')}>< BsEye/></div>
-              {errors.password && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.password}</p>}
+              {errors.password && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.password}</p>}{/*message error */}
               </div>
 
               <div className='signup__form-selectcontry'>
+                 {/*input select contry*/}
                <select  
-                onBlur={handleError}
+                onBlur={handleError}//event error to select contry
                 name='country'
                 value={initialValue.country} 
                 onChange={(e)=>handleChangue(e)}
-                
-               >
+                >
                     <option  value={''} >{'Country of Residence'}</option>
                     {countries.length && countries.map(data=>{
                       return <option  value={data.country}  key={data.id} >{data.country}</option>
                     })}  
               </select>
               <div><BsSearch className='signup_BsSearch'/></div>
-              {errors.country && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.country}</p>}
+              {errors.country && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.country}</p>}{/*message error */}
               </div>
 
               <div>
+                {/*input langueage */}
               <select 
              
                 name='language'
@@ -165,7 +167,7 @@ const SignUP = () => {
               </div>
 
               <div className='signup__form-cehckbox'>
-               
+                {/*input condition term */}
                 <input 
                 onBlur={handleErrorcheck}
                   type='checkbox'
@@ -177,12 +179,13 @@ const SignUP = () => {
                 <p>By continuing I agree to the <a href='political'> Terms of Services </a> and <a href='Privacy'> Privacy Policy</a></p>
                 
               </div>
-              {errors.checkBoxState && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.checkBoxState}</p>}
-              <button type='submit'>Sing up</button>
+              {errors.checkBoxState && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.checkBoxState}</p>}{/*message error */}
+              <button type='submit' >Sing up</button>
             </form>
          </div>
 
       </div>}
+        {/*link to redirec Log in */}
       <div className='signup__container-footer'>
         <span>Don't Have an account? </span><NavLink to='/'>Log in</NavLink><span> instead</span>
       </div>
