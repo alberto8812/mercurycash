@@ -8,8 +8,9 @@ import Loaders from '../../components/Loadres/Loaders';
 
 
 const LoginUser = () => {
-  const [loader, setLoader] = useState(false)
-  useEffect(() => {
+  const [loader, setLoader] = useState(false)//hooks to implement loader
+
+  useEffect(() => {// hooks to charge loader
     setTimeout(() => {
       setLoader(()=>true)
     }, 5000);
@@ -20,11 +21,15 @@ const LoginUser = () => {
   return (
     <>
       {!loader?<div className='signup__louder'><Loaders/></div>:<div className='login__container'>
+       
+        {/*header logo an title*/}
+
          <div className='login__container-header'>
              <div><img src={images.logo}/></div>
               <p><span>mercury</span>cash</p>
          </div>
 
+        {/*input email */}
          <div className='login__container-body'>
             <h2>Welcome Back</h2>
             <form >
@@ -32,9 +37,8 @@ const LoginUser = () => {
               type="email"
               placeholder='Email'
               name='email'
-        
               />
-             
+             {/*input password */}
              <div>
               <input
                 type="Password"
@@ -58,7 +62,7 @@ const LoginUser = () => {
          </div>
       </div>}
 
-      
+      {/*link to redirec sign up */}
       <div className='login__container-footer'>
         <span>Don't Have an account? </span><NavLink to='/signUp'>Sign up</NavLink><span> instead</span>
       </div>
