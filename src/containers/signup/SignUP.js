@@ -6,32 +6,55 @@ import { FaUserCircle } from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import './SignUp.scss'
 import {getContries} from '../../Redux/actions'
-
+import {useSingUp} from  '../../hooks/useSingUp'
 
 const initailState={
   email:"",
   password:"",
   Retype_password:"",
   country:"",
-  language:"",
+  language:"english",
+  checkBoxState:"",
  
 }
-const initailStatecheck={
-  checkBoxState:"",
-}
+const validation=(initialValue)=>{
+ // console.log(initialValue)
+  let error={}
+  let longEmail= /\S+@\S+\.\S+/;
+ console.log(initialValue)
+ if(initialValue.email===""){
+   error.email="The email field is required"
+ }//else if(!longName.test(initialValue.email)){
+ //  error.email="The name is too long, it doesn't exceed 20 characters"
+// }
+ if(initialValue.password!==initialValue.Retype_password){
+  error.password="password are not the same"
+ }
+ //if(!initialValue. password){
+  // error.password="The Description field is required"
+ //}
+ if(initialValue.country===''){
+  error.country="The contry field is required"
+ }
+
+ 
+ console.log(error)
+  return error
+ }
+
 
 
 
 const SignUP = () => {
+  const {initialValue,errors, handleChangue,handleChangueCheck,handleError,handleSubmit}=useSingUp(initailState,validation)
   const countries=useSelector((state)=>state.countries)
   const dispatch = useDispatch();
   const [formSingUp, setFormSingUp] = useState(initailState)
-  const [formCheck, setFormCheck] = useState(initailStatecheck)
   const [viewsPassword, setViewsPassword] = useState({password1:'password',password2:'password'})
 
 
 
- //console.log(formSingUp)
+
 
 
     useEffect(() => {
@@ -39,22 +62,22 @@ const SignUP = () => {
         }, [])
 
 
-  const handleChangue=(e)=>{
+  //const handleChangue=(e)=>{
 
 
-      setFormSingUp({...formSingUp,[e.target.name]:e.target.value})
+    //  setFormSingUp({...formSingUp,[e.target.name]:e.target.value})
  
 
-  }
+  //}
 
 
-  const handleChangueCheck=(e)=>{
+ // const handleChangueCheck=(e)=>{
 
 
-    setFormCheck({...formCheck,[e.target.name]:e.target.checked})
+    //setFormSingUp({...formSingUp,[e.target.name]:e.target.checked})
 
 
-  }
+  //}
 
   const viewPassword=(dato)=>{
 
@@ -78,24 +101,29 @@ const SignUP = () => {
 
          <div className='signup__container-body'>
             <h2>Welcome Back</h2>
-            <form >
+
+            <form onSubmit={(e)=>handleSubmit(e)} >
+              
             <div>
               <input
+              onBlur={handleError}
               type="email"
               placeholder='Email'
               name='email'
-              value={formSingUp.email} 
+              value={initialValue.email} 
               onChange={(e)=>handleChangue(e)}
               />
               <div><FaUserCircle/></div>
+              {errors.email && <p style={{color:'red'}}>{errors.email}</p>}
             </div>
-             
+            
              <div>
               <input
+               
                 type={viewsPassword.password1}
                 placeholder='Password'
                 name='password'
-                value={formSingUp.password} 
+                value={initialValue.password} 
                 onChange={(e)=>handleChangue(e)}
               />
               <div onClick={()=> viewPassword('password1')}>< BsEye/></div>
@@ -103,19 +131,22 @@ const SignUP = () => {
               
               <div>
               <input
+                onBlur={handleError}
                 type={viewsPassword.password2}
                 placeholder='Retype Password'
                 name='Retype_password'
-                value={formSingUp.Retype_password} 
+                value={initialValue.Retype_password} 
                 onChange={(e)=>handleChangue(e)}
               />
               <div onClick={()=> viewPassword('password2')}>< BsEye/></div>
+              {errors.password && <p style={{color:'red'}}>{errors.password}</p>}
               </div>
 
               <div className='signup__form-selectcontry'>
                <select  
+                onBlur={handleError}
                 name='country'
-                value={formSingUp.country} 
+                value={initialValue.country} 
                 onChange={(e)=>handleChangue(e)}
                 
                >
@@ -125,12 +156,14 @@ const SignUP = () => {
                     })}  
               </select>
               <div><BsSearch className='signup_BsSearch'/></div>
+              {errors.country && <p style={{color:'red'}}>{errors.country}</p>}
               </div>
 
               <div>
               <select 
+             
                 name='language'
-                value={formSingUp.language} 
+                value={initialValue.language} 
                 onChange={(e)=>handleChangue(e)}
                 
               >
