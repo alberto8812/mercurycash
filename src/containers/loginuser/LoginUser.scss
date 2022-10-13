@@ -1,0 +1,151 @@
+
+.login__container{
+    display: flex;
+    flex-direction: column;
+    
+    height: 70vh;
+    width:  50vh;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+
+.login__container-header{
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   
+
+    div{
+       
+        width: 5vh;
+        height: 5vh;
+       padding: 5px;
+        img{
+            width: 100%;
+            height: 100%;
+           }
+
+    }
+
+
+   p{
+    font-weight: bold;
+    font-size: 25px;
+    padding: 5px;
+   
+    span{
+        color:var(--secondary-color);
+        
+    }
+   }
+
+}
+
+
+.login__container-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h2{
+        color:var(--secondary-color);
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+     
+        
+
+        input{
+            width: 30vh;
+            height: 5vh;
+            margin: 15px;
+            border-radius: 7px;
+            border: 1px solid var( --border);
+   
+
+        }
+
+        
+            div{
+                position:relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+ 
+                div{
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                 
+                    top: 3.1vh;
+                    left: 27vh;
+                    right: 0;
+                    margin: 0 auto;
+                    width: 30px;
+                    height: 30px;
+                    
+                }
+            }
+
+            a{
+                display: flex;
+                justify-content: flex-end;
+                font-weight: 80px;
+                font-size: 1.3vh;
+                color:var(--secondary-color) ;
+            }
+
+            .login__form-cehckbox{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                padding-bottom: 5vh;
+                
+                input{
+                    width: 2vh;
+                    height: 2vh;
+                    border: 2px solid var( --secondary-color);
+                    appearance: none;
+                  
+                    
+                }
+                span{
+                    font-weight: 700;
+                    font-size: 1.5vh;
+                }
+            }
+           button{
+            width: 30vh;
+            height: 5vh;
+            margin: 15px;
+            border-radius: 30px;
+            background-color: var(--primary-color);
+            color: aliceblue;
+            font-size: 2.2vh;
+            border: none ;
+
+            &:hover{
+                transition: all 0.3s ease;
+                background-color: var(--secondary-color);
+            }
+           }
+        
+    }
+}
+
+
+.login__container-foote{
+    display: flex;
+    flex-direction: row;
+}
