@@ -18,9 +18,13 @@
   
 
 </p>
- ###Images
 
-Image:
+## ## How run project
+- Folder claint (react): npm start 
+- Folder claint (JSON server): npm run w-api 
+
+
+## ## Image:
 
 ![login](https://user-images.githubusercontent.com/101751073/195706789-9c12e8f1-abdb-47be-9be5-b866aad67f15.jpg)
 
