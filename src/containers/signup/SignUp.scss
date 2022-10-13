@@ -165,17 +165,24 @@
          
                 width: 30vh;
                 height: 5vh;
-                
-                input{
+
+           
+                input[type="checkbox"]{
+
                     width: 10%;
                     height:39%;
+                    appearance: none;
                     border: 2px solid var( --secondary-color);
                     background-color: white;
-                    border-radius: 50%;
-                    appearance: none;
-                    cursor: pointer;
+            
+                     border-radius: 50%;
+                     cursor: pointer;
+                    }
+                    input[type="checkbox"]:checked {
+                        background-color:var( --secondary-color);
+                    }
+
                     
-                }
                 p{
                     font-weight: 600;
                     font-size: 1.5vh;       
