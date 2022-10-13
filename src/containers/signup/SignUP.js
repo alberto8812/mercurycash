@@ -14,27 +14,29 @@ const initailState={
   Retype_password:"",
   country:"",
   language:"english",
-  checkBoxState:"",
+  checkBoxState:false,
  
 }
 const validation=(initialValue)=>{
- // console.log(initialValue)
+  console.log(initialValue)
   let error={}
   let longEmail= /\S+@\S+\.\S+/;
  console.log(initialValue)
  if(initialValue.email===""){
    error.email="The email field is required"
- }//else if(!longName.test(initialValue.email)){
- //  error.email="The name is too long, it doesn't exceed 20 characters"
-// }
+ }else if(!longEmail.test(initialValue.email)){
+   error.email="The Email is rong, it haven't @ characters"
+ }
  if(initialValue.password!==initialValue.Retype_password){
   error.password="password are not the same"
+ }else if(!initialValue.password.length){
+   error.password="The password field is required"
  }
- //if(!initialValue. password){
-  // error.password="The Description field is required"
- //}
  if(initialValue.country===''){
   error.country="The contry field is required"
+ }
+ if(initialValue.checkBoxState===false){
+  error.checkBoxState="you shoul be I agree to the Term of services"
  }
 
  
@@ -100,7 +102,7 @@ const SignUP = () => {
          </div>
 
          <div className='signup__container-body'>
-            <h2>Welcome Back</h2>
+            <h2>Create your account</h2>
 
             <form onSubmit={(e)=>handleSubmit(e)} >
               
@@ -114,7 +116,7 @@ const SignUP = () => {
               onChange={(e)=>handleChangue(e)}
               />
               <div><FaUserCircle/></div>
-              {errors.email && <p style={{color:'red'}}>{errors.email}</p>}
+              {errors.email && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.email}</p>}
             </div>
             
              <div>
@@ -139,7 +141,7 @@ const SignUP = () => {
                 onChange={(e)=>handleChangue(e)}
               />
               <div onClick={()=> viewPassword('password2')}>< BsEye/></div>
-              {errors.password && <p style={{color:'red'}}>{errors.password}</p>}
+              {errors.password && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.password}</p>}
               </div>
 
               <div className='signup__form-selectcontry'>
@@ -156,7 +158,7 @@ const SignUP = () => {
                     })}  
               </select>
               <div><BsSearch className='signup_BsSearch'/></div>
-              {errors.country && <p style={{color:'red'}}>{errors.country}</p>}
+              {errors.country && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.country}</p>}
               </div>
 
               <div>
@@ -175,6 +177,7 @@ const SignUP = () => {
               <div className='signup__form-cehckbox'>
                
                 <input 
+                onBlur={handleError}
                   type='checkbox'
                   name="checkBoxState"
                   value='checkBoxState'
@@ -182,8 +185,9 @@ const SignUP = () => {
                   />
                 
                 <p>By continuing I agree to the <a href='political'> Terms of Services </a> and <a href='Privacy'> Privacy Policy</a></p>
+                
               </div>
-
+              {errors.checkBoxState && <p style={{color:'red',fontSize:'1.5vh'}}>{errors.checkBoxState}</p>}
               <button type='submit'>Sing up</button>
             </form>
          </div>
