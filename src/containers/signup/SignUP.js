@@ -14,8 +14,10 @@ const initailState={
   Retype_password:"",
   country:"",
   language:"",
-  checkBox:""
-
+ 
+}
+const initailStatecheck={
+  checkBoxState:"",
 }
 
 
@@ -24,7 +26,12 @@ const SignUP = () => {
   const countries=useSelector((state)=>state.countries)
   const dispatch = useDispatch();
   const [formSingUp, setFormSingUp] = useState(initailState)
- console.log(formSingUp)
+  const [formCheck, setFormCheck] = useState(initailStatecheck)
+  const [viewsPassword, setViewsPassword] = useState({password1:'password',password2:'password'})
+
+
+
+ //console.log(formSingUp)
 
 
     useEffect(() => {
@@ -33,11 +40,30 @@ const SignUP = () => {
 
 
   const handleChangue=(e)=>{
-    console.log(e.target)
-    setFormSingUp({...formSingUp,[e.target.name]:e.target.value})
+
+
+      setFormSingUp({...formSingUp,[e.target.name]:e.target.value})
+ 
+
   }
 
 
+  const handleChangueCheck=(e)=>{
+
+
+    setFormCheck({...formCheck,[e.target.name]:e.target.checked})
+
+
+  }
+
+  const viewPassword=(dato)=>{
+
+   if(dato==='password1'){
+    setViewsPassword(viewsPassword.password1==='password'?{...viewsPassword,password1:"text"}:{...viewsPassword,password1:'password'})
+   }else{
+    setViewsPassword(viewsPassword.password2==='password'?{...viewsPassword,password2:"text"}:{...viewsPassword,password2:'password'})
+   }
+  }
 
 
 
@@ -66,24 +92,24 @@ const SignUP = () => {
              
              <div>
               <input
-                type="Password"
+                type={viewsPassword.password1}
                 placeholder='Password'
                 name='password'
                 value={formSingUp.password} 
                 onChange={(e)=>handleChangue(e)}
               />
-              <div>< BsEye/></div>
+              <div onClick={()=> viewPassword('password1')}>< BsEye/></div>
               </div>
               
               <div>
               <input
-                type="Password"
+                type={viewsPassword.password2}
                 placeholder='Retype Password'
-                name='Retype_Password'
-                value={formSingUp. Retype_password} 
+                name='Retype_password'
+                value={formSingUp.Retype_password} 
                 onChange={(e)=>handleChangue(e)}
               />
-              <div>< BsEye/></div>
+              <div onClick={()=> viewPassword('password2')}>< BsEye/></div>
               </div>
 
               <div className='signup__form-selectcontry'>
@@ -114,7 +140,14 @@ const SignUP = () => {
               </div>
 
               <div className='signup__form-cehckbox'>
-                <input type='checkbox'/>
+               
+                <input 
+                  type='checkbox'
+                  name="checkBoxState"
+                  value='checkBoxState'
+                  onChange={(e)=>handleChangueCheck(e)}
+                  />
+                
                 <p>By continuing I agree to the <a href='political'> Terms of Services </a> and <a href='Privacy'> Privacy Policy</a></p>
               </div>
 

@@ -36,7 +36,9 @@ const LoginUser = () => {
               <a href='mercory.com'>Forgot Password</a>
 
               <div className='login__form-cehckbox'>
+             
                 <input type='checkbox'/>
+            
                 <span>Remember me.</span>
               </div>
 
