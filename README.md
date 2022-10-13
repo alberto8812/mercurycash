@@ -24,13 +24,14 @@
 - Folder claint (JSON server): npm run w-api 
 
 
-## ## Image:
+## ## login users:
+- component that contains two inputs for email, password (has a password views to see),one checkbox to remember de data user and one button of submit data.also it has a link to sign up a new user
 
 ![login](https://user-images.githubusercontent.com/101751073/195706789-9c12e8f1-abdb-47be-9be5-b866aad67f15.jpg)
 
 
  
- Image:
-
+## ## create users:
+- component that contains tw
 ![create](https://user-images.githubusercontent.com/101751073/195706798-98e4cb90-b4ad-4680-b1df-eabfed8d70b9.jpg)
 
