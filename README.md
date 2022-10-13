@@ -42,7 +42,7 @@
 
 the back have be done with json server where the project has two routes:
 
-__IMPORTANTE__: this is a simulation with JSON server, but la aplicacion can connect with a real back-end
+__IMPORTANT__: this is a simulation with JSON server, but la aplicacion can connect with a real back-end
 
 - [ ] __GET /countries:
   - get country from the back-end
