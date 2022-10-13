@@ -18,7 +18,7 @@ const initailState={
  
 }
 const validation=(initialValue)=>{
-  console.log(initialValue)
+  //console.log(initialValue)
   let error={}
   let longEmail= /\S+@\S+\.\S+/;
  console.log(initialValue)
@@ -48,14 +48,11 @@ const validation=(initialValue)=>{
 
 
 const SignUP = () => {
-  const {initialValue,errors, handleChangue,handleChangueCheck,handleError,handleSubmit}=useSingUp(initailState,validation)
+  const {initialValue,errors, handleChangue,handleChangueCheck,handleError,handleSubmit,handleErrorcheck}=useSingUp(initailState,validation)
   const countries=useSelector((state)=>state.countries)
   const dispatch = useDispatch();
   const [formSingUp, setFormSingUp] = useState(initailState)
   const [viewsPassword, setViewsPassword] = useState({password1:'password',password2:'password'})
-
-
-
 
 
 
@@ -64,22 +61,7 @@ const SignUP = () => {
         }, [])
 
 
-  //const handleChangue=(e)=>{
 
-
-    //  setFormSingUp({...formSingUp,[e.target.name]:e.target.value})
- 
-
-  //}
-
-
- // const handleChangueCheck=(e)=>{
-
-
-    //setFormSingUp({...formSingUp,[e.target.name]:e.target.checked})
-
-
-  //}
 
   const viewPassword=(dato)=>{
 
@@ -177,7 +159,7 @@ const SignUP = () => {
               <div className='signup__form-cehckbox'>
                
                 <input 
-                onBlur={handleError}
+                onBlur={handleErrorcheck}
                   type='checkbox'
                   name="checkBoxState"
                   value='checkBoxState'

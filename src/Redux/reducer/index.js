@@ -1,4 +1,4 @@
-import { GET_COUNTRIES } from "../AllconstRedux"
+import { GET_COUNTRIES,POST_USERDATA } from "../AllconstRedux"
 
 
 
@@ -15,6 +15,10 @@ export default (state = initialState, { type, payload }) => {
 
   case GET_COUNTRIES:
     return { ...state, countries:payload }
+  
+    case POST_USERDATA:
+      
+    return  state
 
   default:
     return state
