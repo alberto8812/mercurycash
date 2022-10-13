@@ -74,6 +74,15 @@
       "language": "english",
       "checkBoxState": true,
       "id": 1
+    },
+    {
+      "email": "cvelascosaavedra@gmail.com",
+      "password": "12345",
+      "Retype_password": "12345",
+      "country": "EE.UU",
+      "language": "español",
+      "checkBoxState": true,
+      "id": 2
     }
   ]
 }

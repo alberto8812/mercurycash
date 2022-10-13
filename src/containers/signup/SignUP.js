@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import './SignUp.scss'
 import {getContries} from '../../Redux/actions'
 import {useSingUp} from  '../../hooks/useSingUp'
+import Loaders from '../../components/Loadres/Loaders';
 
 const initailState={
   email:"",
@@ -53,11 +54,16 @@ const SignUP = () => {
   const dispatch = useDispatch();
   const [formSingUp, setFormSingUp] = useState(initailState)
   const [viewsPassword, setViewsPassword] = useState({password1:'password',password2:'password'})
-
+  const [loader, setLoader] = useState(false)
+  
 
 
     useEffect(() => {
         dispatch(getContries())
+        setTimeout(() => {
+          setLoader(()=>true)
+        }, 5000);
+        
         }, [])
 
 
@@ -76,8 +82,10 @@ const SignUP = () => {
 
 
   return (
-    <>
-      <div className='signup__container'>
+  <>
+    
+     {!loader?<div className='signup__louder'><Loaders/></div>:<div className='signup__container'>
+       
          <div className='signup__container-header'>
              <div><img src={images.logo}/></div>
               <p><span>mercury</span>cash</p>
@@ -174,7 +182,7 @@ const SignUP = () => {
             </form>
          </div>
 
-      </div>
+      </div>}
       <div className='signup__container-footer'>
         <span>Don't Have an account? </span><NavLink to='/'>Log in</NavLink><span> instead</span>
       </div>
