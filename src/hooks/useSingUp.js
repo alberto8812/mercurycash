@@ -54,7 +54,7 @@ export const useSingUp = (Value,validation) => {
     if(Object.keys(errors).length){
       //if any information miss the information won't send
       return
-    }else if(initialValue.email!=""){
+    }else if(initialValue.email!==""){
       //información exitosa ir al backend
       Swal.fire({
         title:"User Data",

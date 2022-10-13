@@ -9,6 +9,7 @@ import Loaders from '../../components/Loadres/Loaders';
 
 const LoginUser = () => {
   const [loader, setLoader] = useState(false)//hooks to implement loader
+  const [viewsPassword, setViewsPassword] = useState('password')
 
   useEffect(() => {// hooks to charge loader
     setTimeout(() => {
@@ -16,6 +17,13 @@ const LoginUser = () => {
     }, 5000);
     
     }, [])
+
+    const viewPassword=(dato)=>{
+      //funtion views password
+    
+        setViewsPassword(viewsPassword==='password'?'text':'password')
+     
+      }
 
 
   return (
@@ -25,7 +33,7 @@ const LoginUser = () => {
         {/*header logo an title*/}
 
          <div className='login__container-header'>
-             <div><img src={images.logo}/></div>
+             <div><img src={images.logo} alt='mercury'/></div>
               <p><span>mercury</span>cash</p>
          </div>
 
@@ -41,11 +49,11 @@ const LoginUser = () => {
              {/*input password */}
              <div>
               <input
-                type="Password"
+                type={viewsPassword}
                 placeholder='Password'
                 name='Password'
               />
-              <div>< BsEye/></div>
+              <div onClick={()=>viewPassword()}>< BsEye/></div>
               </div>
               
               <a href='mercory.com'>Forgot Password</a>
